@@ -144,7 +144,7 @@ export default {
         if (this.p1Completion === 100 && this.p2Completion === 100)
           return "tie";
         //AI Version
-        return this.p1Completion === 100 ? "player1" : "AI";
+        return this.p1Completion === 100 ? "player1" : "player2";
       } else {
         return "";
       }
