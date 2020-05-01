@@ -341,7 +341,7 @@ export default {
         if (data.time) this.time = data.time;
         if (data.end) this.end = data.end;
         if (data.api_text) this.apiText = data.api_text;
-        console.log("p1text",this.p1Text === true,"p2Text",this.p2Text === true,"winner",this.winner === true, "end",this.end === true)
+        console.log("p1text",this.p1Text === true,"p2Text",this.p2Text === true,"winner",this.winner === true, "end",this.end === true,"player1", this.player1, "player2", this.player2)
         if (!this.player2 && this.userIs === "player1" && !this.end) {
           this.prompt = "Click Link To Copy";
         }
