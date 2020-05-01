@@ -16,7 +16,7 @@ export default new Vuex.Store({
   actions: {
     async checkID(context) {
       const token = localStorage.getItem("cafe-racers");
-      const url = "http://cafe-racers-backend.herokuapp.com/api/jwt";
+      const url = "https://cafe-racers-backend.herokuapp.com/api/jwt";
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,

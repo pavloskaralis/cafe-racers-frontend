@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     async twoPlayer() {
-      const url = "http://cafe-racers-backend.herokuapp.com/api/games";
+      const url = "https://cafe-racers-backend.herokuapp.com/api/games";
       const request = {
         player1: this.id,
         end: 0,
