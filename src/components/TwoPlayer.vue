@@ -541,6 +541,7 @@ export default {
     //   });
   },
   updated() {
+    console.log(this.userIs, this.time)
     // console.log("updating") 
   },
   beforeDestroy() {
