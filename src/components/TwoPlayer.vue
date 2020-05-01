@@ -64,8 +64,8 @@ import Button from "./Button";
 //   broadcaster: 'pusher',
 //   key: 'cafe_racers',
 //   cluster: 'mt1',
-//   host: 'localhost:8000',
-//   authEndpoint: 'localhost:8000/broadcasting/auth',
+//   host: 'cafe-racers-backend.herokuapp.com',
+//   authEndpoint: 'cafe-racers-backend.herokuapp.com/broadcasting/auth',
 //   auth: {
 //     headers: {
 //       Accept: 'application/json',
@@ -111,7 +111,7 @@ export default {
       }
     },
     async p1Again() {
-      const url = `http://localhost:8000/api/games/${this.id}`;
+      const url = `http://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
       let request = { p1_again: this.p1Again };
       await this.$axios.put(url, request);
 
@@ -120,7 +120,7 @@ export default {
       }
     },
     async p2Again() {
-      const url = `http://localhost:8000/api/games/${this.id}`;
+      const url = `http://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
       let request = { p2_again: this.p2Again };
       await this.$axios.put(url, request);
 
@@ -129,7 +129,7 @@ export default {
       }
     },
     async apiText() {
-      const url = `http://localhost:8000/api/games/${this.id}`;
+      const url = `http://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
       const request = {
         api_text: this.apiText,
       };
@@ -137,7 +137,7 @@ export default {
       if(this.userIs === "player1") await this.$axios.put(url, request);
     },
     async time() {
-      const url = `http://localhost:8000/api/games/${this.id}`;
+      const url = `http://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
       const request = {
         time: this.time,
       };
@@ -145,7 +145,7 @@ export default {
       if(this.userIs === "player1") await this.$axios.put(url, request);
     },
     async tracking() {
-      const url = `http://localhost:8000/api/games/${this.id}`;
+      const url = `http://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
       const request = {
         tracking: this.tracking,
       };
@@ -153,7 +153,7 @@ export default {
       if(this.userIs === "player1") await this.$axios.put(url, request);
     },
     async p1Text() {
-      const url = `http://localhost:8000/api/games/${this.id}`;
+      const url = `http://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
       const request = {
         p1_text: this.p1Text,
       };
@@ -161,7 +161,7 @@ export default {
       if(this.userIs === "player1" && this.p1Text.length < this.apiText.length && !this.restart) await this.$axios.put(url, request);
     },
     async p2Text() {
-      const url = `http://localhost:8000/api/games/${this.id}`;
+      const url = `http://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
       const request = {
         p2_text: this.p2Text,
       };
@@ -273,7 +273,7 @@ export default {
   methods: {
     async restartGame() {
       if (this.userIs === "player1") {
-        const url = `http://localhost:8000/api/games/${this.id}`;
+        const url = `http://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
         const request = {
           p1_text: "",
         };
@@ -281,7 +281,7 @@ export default {
         await this.$axios.put(url, request);
         this.p1Text = "";
       } else if (this.userIs === "player2") {
-        const url = `http://localhost:8000/api/games/${this.id}`;
+        const url = `http://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
         const request = {
           p2_text: "",
         };
@@ -324,7 +324,7 @@ export default {
     },
     async getGame() {
       try {
-        const url = `http://localhost:8000/api/games/${this.id}`;
+        const url = `http://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
         const response = await this.$axios.get(url);
         const data = response.data[0];
 
@@ -374,7 +374,7 @@ export default {
           if(this.userIs === "player1" && this.p1Text.length === this.apiText.length - 1){
             this.tracking = false; 
 
-            const url = `http://localhost:8000/api/games/${this.id}`;
+            const url = `http://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
             const request = {
               p1_text: this.p1Text + key,
             };
@@ -385,7 +385,7 @@ export default {
           } else if (this.userIs === "player2" && this.p2Text.length === this.apiText.length - 1){
             this.tracking = false; 
 
-            const url = `http://localhost:8000/api/games/${this.id}`;
+            const url = `http://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
             const request = {
               p2_text: this.p2Text + key,
             };
@@ -425,7 +425,7 @@ export default {
       }
     },
     async endGame() {
-      const url = `http://localhost:8000/api/games/${this.id}`;
+      const url = `http://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
       let request = {
         end: 1,
       };
@@ -444,7 +444,7 @@ export default {
       this.prompt = "Share Copied Link";
     },
     async addPlayer2() {
-      const url = `http://localhost:8000/api/games/${this.id}`;
+      const url = `http://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
       const request = {
         player2: this.$store.state.id,
       };
@@ -503,7 +503,7 @@ export default {
       if (scrollHeight > 80) textBody.scrollTop += remount ? scrollHeight - 20 : 25;
     },
     async updateGame() {
-      const url = `http://localhost:8000/api/games/${this.id}`;
+      const url = `http://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
       const response = await this.$axios.get(url);
       const data = response.data[0];
       // console.log("checking")
@@ -543,7 +543,7 @@ export default {
     clearInterval(this.updater);
     // console.log("destroying")
     if (this.end) {
-      const url = `http://localhost:8000/api/games/${this.id}`;
+      const url = `http://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
       this.$axios.delete(url);
     }
   },
