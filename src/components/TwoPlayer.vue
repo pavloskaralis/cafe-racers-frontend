@@ -104,6 +104,7 @@ export default {
   watch: {
     winner() {
       if (this.winner) {
+        console.log("winner")
         if(this.userIs === "player1" && !this.p1Text) this.endGame();
         if(this.userIs === "player2" && !this.p2Text) this.endGame();
         this.tracking = 0;
@@ -427,6 +428,7 @@ export default {
       }
     },
     async endGame() {
+      console.log("ending")
       const url = `https://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
       let request = {
         end: 1,
