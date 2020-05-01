@@ -288,9 +288,8 @@ export default {
 
         await this.$axios.put(url, request);
         this.p2Text = "";
-        document.getElementById("text-body").scrollTop = 0;
-
       }
+      document.getElementById("text-body").scrollTop = 0;
     },
     async startGame() {
       // console.log("starting")
