@@ -83,6 +83,7 @@ export default {
   },
   data() {
     return {
+      mounted: false,
       updater: '',
       id: "",
       prompt: "",
@@ -103,10 +104,10 @@ export default {
 
   watch: {
     winner() {
-      if (this.winner) {
+      if (this.winner && this.mounted) {
         console.log("winner")
-        if(this.userIs === "player1" && !this.p1Text && this.player2) this.endGame();
-        if(this.userIs === "player2" && !this.p2Text  && this.player1) this.endGame();
+        if(this.userIs === "player1" && !this.p1Text) this.endGame();
+        if(this.userIs === "player2" && !this.p2Text) this.endGame();
         this.tracking = 0;
         this.prompt = "Play Again?";
       }
@@ -527,6 +528,7 @@ export default {
   },
   async mounted() {
     // console.log("mounting")
+    this.mounted = true; 
     let path = this.$route.path;
     this.id = path.split("/")[2];
     await this.getGame();
