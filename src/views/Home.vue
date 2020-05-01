@@ -48,7 +48,7 @@ export default {
 
       const response = await this.$axios.post(url, request);
       const id = response.data.id;
-
+      console.log(response,request)
       this.$router.push(`/2-player/${id}`);
     },
     versusAI() {
