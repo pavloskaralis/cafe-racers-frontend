@@ -1,0 +1,179 @@
+.cup-container {
+    width: 50%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 402px; 
+    cursor: default;
+ //    background: blue; 
+
+ .cup-text {
+         font-family: $fontA;
+         font-style: italic;
+         font-weight: 600;
+         text-align: center;
+         font-size: 64px;
+         color: $white;
+         background-color: $red; 
+         padding: 8px 48px;
+         padding-right: 58px; 
+         margin: 0 auto;
+         box-sizing: border-box;
+         border: 8px solid darken($red,15%);
+
+         @media(max-width: $breakpointB) {
+            font-size: 52px;    
+            padding: 8px 43px;
+            padding-right: 52px;
+            border: 7.4px solid darken($red,15%);
+         }
+         @media(max-width: $breakpointC) {
+             font-size: 36px;    
+             padding: 8px 38px;
+             padding-right: 46px;
+             border: 6.8px solid darken($red,15%); 
+         }
+         @media(max-width: $breakpointD) {
+             font-size: 28px; 
+             padding: 8px 33px;
+             padding-right: 40px;
+             border: 6.2px solid darken($red,15%);              
+         }
+         @media(max-width: $breakpointE) {
+             font-size: 22px;  
+             padding: 8px 28px;
+             padding-right: 34px;
+             border: 5.6px solid darken($red,15%);   
+         }
+         @media(max-width: $breakpointF) {
+             font-size: 18px;  
+             padding: 8px 23px;
+             padding-right: 28px;
+             border: 5px solid darken($red,15%);      
+         }
+         @media(max-width: $breakpointG) {
+             font-size: 14px;   
+             padding: 8px 18px;
+             padding-right: 22px;
+             border: 4.4px solid darken($red,15%);             
+         }
+         @media(max-height: $breakpointC) and (min-width: $breakpointC) {
+             font-size: 36px;    
+             padding: 8px 38px;
+             padding-right: 46px;
+             border: 6.8px solid darken($red,15%);
+         }
+ }
+ .winner-wrap {
+     @extend .vertical-align;
+     width: 100%;
+     height: 100%;
+     // background: blue;
+     
+     .winner-text {
+         @extend .cup-text; 
+     }
+ }
+
+ .empty-cup {
+     width: 100%;
+     background-image: url("../assets/cup.png");
+     background-size: contain; 
+     background-repeat: no-repeat;
+     background-position: bottom;
+     height: 280px;
+     position: relative;
+
+     // background-color: pink;
+
+     @media(max-width: $breakpointB) {
+         height: 250px; 
+     }
+     @media(max-width: $breakpointC) {
+         height: 185px; 
+     }
+     @media(max-width: $breakpointD) {
+         height: 165px; 
+     }
+     @media(max-width: $breakpointE) {
+         max-height: 135px;
+     }
+     @media(max-width: $breakpointF) {
+         height: 105px;
+     }
+     @media(max-width: $breakpointG) {
+         height: 70px; 
+     }
+     @media(max-height: $breakpointC) and (min-width: $breakpointC) {
+          height: 185px; 
+     }
+
+
+     .full-cup {
+         @extend .empty-cup;
+         background-image: url("../assets/coffee.png"); 
+         transition: clip-path .5s;  
+         // clip-path: polygon(100% 80%, 100% 100%, 0 100%, 0 80%);      
+     }
+
+     .speed-text {
+         position: absolute;
+         top: 0;
+         left: 0;
+         height: 100%;
+         width: 100%;
+         text-align: center;
+         font-family: $fontA;
+         font-weight: 600;
+         color: $coffee;
+         font-size: 34px;
+         padding-top: 48px;    
+         // background: red; 
+         @media(max-width: $breakpointB) {
+             font-size: 30px;
+             padding-top: 42px;     
+         }
+         @media(max-width: $breakpointC) {
+             font-size: 22px;
+             padding-top: 32px;        
+         }
+         @media(max-width: $breakpointD) {
+             font-size: 20px;
+             padding-top: 30px; 
+         }
+         @media(max-width: $breakpointE) {
+             font-size: 16px;
+             padding-top: 24px; 
+         }
+         @media(max-width: $breakpointF) {
+             font-size: 14px;
+             padding-top: 20px;  
+         }
+         @media(max-width: $breakpointG) {
+             font-size: 9.5px;
+             padding-top: 12px;
+                        
+         }
+         @media(max-height: $breakpointC) and (min-width: $breakpointC) {
+             font-size: 22px;
+             padding-top: 32px;    
+         }
+     }
+ }
+ 
+ .player-text {
+     @extend .vertical-align, .cup-text; 
+     border: none;
+     padding: none;
+     text-align: center;
+     background-color: transparent; 
+     min-height: 81px; 
+     height: 60%;
+   
+     @media(max-width: $breakpointC) {
+         height: 45%;
+     }
+    
+ }
+
+}

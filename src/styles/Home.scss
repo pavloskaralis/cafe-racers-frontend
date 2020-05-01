@@ -1,0 +1,136 @@
+.home {
+    width: 100%;
+    height: 100%;
+    min-height: 600px; 
+
+    background: radial-gradient(
+      circle at 35% bottom, 
+      rgba($dark-blue,0) 0%, 
+      rgba($dark-blue,0) 20%, 
+      rgba($dark-blue,.5) 30%, 
+      rgba($dark-blue,.95) 65%, 
+      rgba($dark-blue,1) 100%
+    );
+    display: flex;
+    flex-direction: column; 
+    box-sizing: border-box;
+    padding: 64px;
+
+    @media(max-width: $breakpointA) {
+      padding: 48px; 
+    }
+    @media(max-width: $breakpointC) {
+      padding: 24px; 
+    }
+   
+    .home-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; 
+      z-index: -1;
+      background-image: url("../assets/home-background.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: bottom left; 
+      min-height: 600px; 
+
+      @media(max-width: $breakpointC) {
+        background-position: bottom center; 
+      }
+    }
+
+    .home-title-wrap {
+      @extend .vertical-align;
+ 
+      @media(max-width: $breakpointC) {
+        min-height: 25%;
+        padding-right: 8px;
+      }
+
+      .home-title {
+        font-size: 144px;
+        font-family: $fontA;
+        font-weight: 600;
+        font-style: italic;
+        color: $white;
+        width: 100%;
+        text-align: right;
+        line-height: 96px;
+        cursor: default;
+        
+        @media(max-width: $breakpointA) {
+          font-size: 128px;
+          line-height: 88px;
+        }
+        @media(max-width: $breakpointB) {
+          font-size: 112px;
+          line-height: 80px;
+        }
+        @media(max-width: $breakpointC) {
+          font-size: 96px;
+          line-height: 76px;
+        }
+        @media(max-width: $breakpointD) {
+          font-size: 80px;
+          line-height: 68px;
+        }
+        @media(max-width: $breakpointE) {
+          font-size: 64px;
+          line-height: 60px;
+          text-align: center;
+        }
+        @media(max-width: $breakpointF) {
+          font-size: 48px;
+          line-height: 44px;
+          text-align: center;
+        }
+        @media(max-width: $breakpointG) {
+          font-size: 36px;
+          line-height: 32px;
+          text-align: center;
+        }
+
+        .title-span {
+          color: $red; 
+        }
+      }
+    }
+
+    .home-button-container {
+        width: 100%;
+        height: 100%;
+        margin-top: 64px;
+        display: flex;
+        justify-content: flex-end;
+
+        @media(max-width: $breakpointA) {
+            margin-top: 48px; 
+        }
+        @media(max-width: $breakpointB) {
+            margin-top: 32px; 
+        }
+        @media(max-width: $breakpointC) {
+            margin-top: 24px; 
+        }
+        @media(max-width: $breakpointD) {
+          margin-top: 20px; 
+        }
+        @media(max-width: $breakpointE) {
+          margin-top: 16px;
+          padding-left: 12px;
+        }
+
+        .home-button-wrap {
+            @extend .vertical-align;
+            height: 100%;
+            @media(max-width: $breakpointC) {
+              justify-content: flex-start;
+            }
+            @media(max-width: $breakpointE) {
+              margin: 0 auto;
+            }
+        }
+    }
+  }

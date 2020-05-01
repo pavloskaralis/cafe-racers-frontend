@@ -1,0 +1,23 @@
+$breakpointA: 1200px;
+$breakpointB: 992px;
+$breakpointC: 768px;
+$breakpointD: 576px;
+$breakpointE: 500px;
+$breakpointF: 410px;
+$breakpointG: 320px;
+
+$fontA: 'Helvetica';
+$fontB: 'Courier New';
+
+.vertical-align {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+}
+
+$dark-blue: rgb(20,35,40);
+$red: rgb(200,0,60);
+$white: rgb(245,245,245);
+$coffee: rgb(103,84,80);
+$brown: rgb(43,23,23);
+$blue: rgb(0,165,255);

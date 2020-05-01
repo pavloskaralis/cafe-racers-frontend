@@ -1,0 +1,217 @@
+.game-pieces {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+
+    // background-color: orange; 
+
+    .player-container {
+      height: 67%;
+      width: 100%;
+      max-width: $breakpointB;
+      margin:0 auto;
+      display: flex;
+      justify-content: space-between;
+      min-height: 402px;
+      // background-color: red; 
+    }
+
+    .text-container {
+      height: 33%;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 24px;
+      padding-top: 12px;
+      padding-bottom: 28px; 
+      min-height: 198px;
+      position: relative;
+      // background-color: pink; 
+
+      .text-body {
+        background-color: $white;
+        width: 100%;
+        max-width: $breakpointB;
+        height: 100%;
+        border-radius: 24px; 
+        margin: 0 auto;
+        min-height: 154px; 
+        box-sizing: border-box;
+        padding: 16px 24px;
+        padding-right: 4px;  
+        overflow: auto;
+        cursor: default; 
+        border: solid 6px lighten($brown,10%);    
+        -ms-overflow-style: none;
+
+
+        @media(max-width: $breakpointB) {
+          padding: 15px 22px;
+          padding-right: 4px;  
+        }
+        @media(max-width: $breakpointC) {
+          padding: 14px 20px;
+          padding-right: 4px;       
+        }
+        @media(max-width: $breakpointD) {
+          padding: 13px 18px;
+          padding-right: 4px;  
+        }
+        @media(max-width: $breakpointE) {
+          padding: 12px 16px;
+          padding-right: 4px;  
+        }
+        @media(max-width: $breakpointF) {
+          padding: 11px 14px;
+          padding-right: 4px;          
+        }
+        @media(max-width: $breakpointG) {
+          padding: 10px 12px;
+          padding-right: 4px;
+        }
+        @media(max-height: $breakpointC) and (min-width: $breakpointC) {
+          padding: 14px 20px;
+          padding-right: 4px;     
+        }        
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        .text-word {
+          display: inline-flex; 
+        }
+      }
+
+      .prompt-container {
+        height: 100%;
+        width: calc(100% - 48px);
+        box-sizing: border-box;
+        padding-bottom: 28px;
+        padding-top: 12px;
+        min-height: 198px;
+        position: absolute;
+        top: 0;
+    
+        // background: red; 
+
+        .prompt-body {
+          background-color: $white;
+          width: 100%;
+          max-width: $breakpointB;
+          height: 100%;
+          border-radius: 24px; 
+          margin: 0 auto;
+          min-height: 154px; 
+          box-sizing: border-box;
+          padding: 16px 24px;
+          padding-right: 4px;  
+          overflow: auto;
+          cursor: default;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly; 
+          border: solid 6px lighten($brown,10%);    
+
+          @media(max-width: $breakpointB) {
+              padding: 15px 22px;
+              padding-right: 4px;  
+          }
+          @media(max-width: $breakpointC) {
+              padding: 14px 20px;
+              padding-right: 4px;       
+          }
+          @media(max-width: $breakpointD) {
+              padding: 13px 18px;
+              padding-right: 4px;  
+          }
+          @media(max-width: $breakpointE) {
+              padding: 12px 16px;
+              padding-right: 4px;  
+          }
+          @media(max-width: $breakpointF) {
+              padding: 11px 14px;
+              padding-right: 4px;          
+          }
+          @media(max-width: $breakpointG) {
+              padding: 10px 12px;
+              padding-right: 4px;
+          }
+          @media(max-height: $breakpointC) and (min-width: $breakpointC) {
+              padding: 14px 20px;
+              padding-right: 4px;     
+          }    
+          
+          .prompt-question {
+            font-weight: 600; 
+            font-family: $fontB; 
+            color: $dark-blue; 
+            font-size: 28px; 
+            letter-spacing: 7px; 
+            text-align: center; 
+            -webkit-text-stroke: $dark-blue .25px;
+
+        
+            @media(max-width: $breakpointB) {
+                font-size: 26px; 
+                letter-spacing: 6.5px;  
+            }
+            @media(max-width: $breakpointC) {
+                font-size: 24px;
+                letter-spacing: 6px;   
+            }
+            @media(max-width: $breakpointD) {
+                font-size: 22px;
+                letter-spacing: 5.5px; 
+            }
+            @media(max-width: $breakpointE) {
+                font-size: 20px;
+                letter-spacing: 5px; 
+            }
+            @media(max-width: $breakpointF) {
+                font-size: 18px;
+                letter-spacing: 4.5px; 
+            }
+            @media(max-width: $breakpointG) {
+                font-size: 16px;
+                letter-spacing: 4px; ; 
+        
+            }
+            @media(max-height: $breakpointC) and (min-width: $breakpointC) {
+                font-size: 24px;
+                letter-spacing: 6px;   
+            }      
+          }
+
+          .prompt-options {
+            display: flex;
+            justify-content: space-evenly;
+            width: calc(100% - 20px);
+
+            @media(max-width: $breakpointB) {
+              width: calc(100% - 18px);
+
+            }
+            @media(max-width: $breakpointC) {
+              width: calc(100% - 16px);
+            }
+            @media(max-width: $breakpointD) {
+              width: calc(100% - 14px);
+            }
+            @media(max-width: $breakpointE) {
+              width: calc(100% - 12px);
+            }
+            @media(max-width: $breakpointF) {
+              width: calc(100% - 10px);
+            }
+            @media(max-width: $breakpointG) {
+              width: calc(100% - 8px);
+            }
+            @media(max-height: $breakpointC) and (min-width: $breakpointC) {
+              width: calc(100% - 16px);
+            }  
+          }
+        }
+      }       
+    }
+  }
