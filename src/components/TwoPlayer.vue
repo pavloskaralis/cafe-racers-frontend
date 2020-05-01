@@ -135,7 +135,6 @@ export default {
       };
       //prevent 2 requests
       if(this.userIs === "player1") await this.$axios.put(url, request);
-      if(this.userIs === "player1") console.log("sent out apiText", request)
     },
     async time() {
       const url = `https://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
@@ -322,7 +321,6 @@ export default {
       const hipsterText = hipsterResponse.data[0];
       //prevent 2 requests
       if(this.userIs === "player1")this.apiText = hipsterText;
-      if(this.userIs === "player1")console.log("got ipsum",this.userIs, this.apiText)
       // this.apiText = "abc";
     },
     async getGame() {
@@ -509,7 +507,7 @@ export default {
       const url = `https://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
       const response = await this.$axios.get(url);
       const data = response.data[0];
-      // console.log("checking")
+      console.log("checking")
       if (this.player1 !== data.player1) this.player1 = data.player1;
       if (this.player2 !== data.player2) this.player2 = data.player2;
       if (this.end !== data.end) this.end = data.end;
@@ -541,7 +539,6 @@ export default {
     //   });
   },
   updated() {
-    console.log(this.userIs, this.time)
     // console.log("updating") 
   },
   beforeDestroy() {
