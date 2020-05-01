@@ -133,7 +133,9 @@ export default {
       const request = {
         api_text: this.apiText,
       };
-      await this.$axios.put(url, request);
+      //prevent 2 requests
+      if(this.userIs === "player1") await this.$axios.put(url, request);
+      if(this.userIs === "player1") console.log("sent out apiText", request)
     },
     async time() {
       const url = `https://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
@@ -141,7 +143,7 @@ export default {
         time: this.time,
       };
       //prevent 2 requests
-      await this.$axios.put(url, request);
+      if(this.userIs === "player1") await this.$axios.put(url, request);
     },
     async tracking() {
       const url = `https://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
@@ -309,7 +311,8 @@ export default {
         this.tracking = 1;
         //starting time
         let date = Date.now() / 1000;
-        this.time = date;
+        //prevent dates getting set twice 
+        if(this.userIs === "player1") this.time = date;
       }, 5000);
     },
     async getIpsum() {
@@ -317,7 +320,9 @@ export default {
         "https://hipsum.co/api/?type=hipster-centric&sentences=2";
       const hipsterResponse = await this.$axios.get(hipsterQuery);
       const hipsterText = hipsterResponse.data[0];
-      this.apiText = hipsterText;
+      //prevent 2 requests
+      if(this.userIs === "player1")this.apiText = hipsterText;
+      if(this.userIs === "player1")console.log("got ipsum",this.userIs, this.apiText)
       // this.apiText = "abc";
     },
     async getGame() {
@@ -507,7 +512,7 @@ export default {
       // console.log("checking")
       if (this.player1 !== data.player1) this.player1 = data.player1;
       if (this.player2 !== data.player2) this.player2 = data.player2;
-      if (!this.end !== data.end) this.end = data.end;
+      if (this.end !== data.end) this.end = data.end;
 
       if (this.userIs === "player1" && this.p2Again !== data.p2_again) this.p2Again = data.p2_again;
       if (this.userIs === "player1" && this.p2Text !== data.p2_text) this.p2Text = data.p2_text;
@@ -515,8 +520,9 @@ export default {
       if (this.userIs === "player2" && this.p1Again !== data.p1_again) this.p1Again = data.p1_again;
       if (this.userIs === "player2" && this.p1Text !== data.p1_text) this.p1Text = data.p1_text;
 
-      if (this.time !== data.time) this.time = data.time;
-      if (this.apiText !== data.api_text) this.apiText = data.api_text;
+      if (this.userIs === "player2" && this.time !== data.time) this.time = data.time;
+      if (this.userIs === "player2" && this.apiText !== data.api_text) this.apiText = data.api_text;
+      if (this.userIs === "player2" && this.apiText !== data.api_text)console.log("fetching new text")
     }
   },
   async mounted() {
