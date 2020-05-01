@@ -105,8 +105,8 @@ export default {
     winner() {
       if (this.winner) {
         console.log("winner")
-        if(this.userIs === "player1" && !this.p1Text) this.endGame();
-        if(this.userIs === "player2" && !this.p2Text) this.endGame();
+        if(this.userIs === "player1" && !this.p1Text && this.player2) this.endGame();
+        if(this.userIs === "player2" && !this.p2Text  && this.player1) this.endGame();
         this.tracking = 0;
         this.prompt = "Play Again?";
       }
