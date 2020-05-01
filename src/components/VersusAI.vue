@@ -190,6 +190,7 @@ export default {
     startGame() {
       if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         let inp = document.getElementById("mobile");
+        prompt();
         inp.click();
       }
       for (let i = 5; i > 0; i--) {
@@ -306,6 +307,8 @@ export default {
     this.getIpsum();
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
       let inp = document.getElementById("mobile");
+              prompt();
+
       inp.click();
     }
   },
