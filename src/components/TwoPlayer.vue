@@ -519,8 +519,7 @@ export default {
       if (this.userIs === "player2" && this.p1Text !== data.p1_text) this.p1Text = data.p1_text;
 
       if (this.userIs === "player2" && this.time !== data.time) this.time = data.time;
-      if (this.userIs === "player2" && this.apiText !== data.api_text) this.apiText = data.api_text;
-      if (this.userIs === "player2" && this.apiText !== data.api_text)console.log("fetching new text")
+      if (this.userIs === "player2" && this.apiText !== data.api_text) {this.apiText = data.api_text; console.log("fetched")}
     }
   },
   async mounted() {
