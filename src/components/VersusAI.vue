@@ -4,7 +4,7 @@
     tabindex="0"
     class="game-pieces"
   >
-    <input id="mobile" class="invisible-mobile" type="text" :click="mobileClick"/>
+    <input id="mobile" class="invisible-mobile" type="text"/>
 
     <div class="player-container">
       <cup :state="p1Cup"></cup>
@@ -188,11 +188,6 @@ export default {
       // this.apiText= "aaaaaaaaaaaaaaaaaaaaa sssssssssssssssssss ddddddddddddddddddddd ffffffffffffffffff"
     },
     startGame() {
-      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        let inp = document.getElementById("mobile");
-        prompt();
-        inp.click();
-      }
       for (let i = 5; i > 0; i--) {
         setTimeout(
           () => (this.prompt = `Start Typing In ${i}`),
@@ -225,6 +220,10 @@ export default {
         this.setDifficulty(event);
       } else if (["yes", "no"].indexOf(event) !== -1) {
         this.setNext(event);
+      }
+      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        let inp = document.getElementById("mobile");
+        inp.focus();
       }
     },
     setDifficulty(level) {
@@ -297,20 +296,10 @@ export default {
       let lHeight = letter.getBoundingClientRect().top;
       let scrollHeight = lHeight - tbHeight;
       if (scrollHeight > 100) textBody.scrollTop += 20;
-    },
-    mobileClick () {
-      let inp = document.getElementById("mobile");
-      inp.focus();
     }
   },
   mounted() {
     this.getIpsum();
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-      let inp = document.getElementById("mobile");
-              prompt();
-
-      inp.click();
-    }
   },
   updated() {
     // console.log("updating")
