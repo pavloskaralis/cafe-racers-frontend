@@ -262,9 +262,9 @@ export default {
       return {
         "Select AI Difficulty": ["easy", "medium", "hard"],
         "Play Again?": ["yes", "no"],
-        "Click Link To Copy": [`http://localhost:8080/2-player/${this.id}`],
+        "Click Link To Copy": [`http://cafe-racers.herokuapp.com/2-player/${this.id}`],
         "Click Ready To Join": ["ready"],
-        "Share Copied Link": [`http://localhost:8080/2-player/${this.id}`],
+        "Share Copied Link": [`http://cafe-racers.herokuapp.com/2-player/${this.id}`],
         "Opponent Has Left": ["exit"],
       }[this.prompt];
     },
@@ -413,7 +413,7 @@ export default {
         case "no":
           this.endGame();
           break;
-        case `http://localhost:8080/2-player/${this.id}`:
+        case `http://cafe-racers.herokuapp.com/2-player/${this.id}`:
           this.copyLink();
           break;
         case "ready":
