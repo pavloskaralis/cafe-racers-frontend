@@ -1,41 +1,23 @@
-// const express = require('express');
-// const serveStatic = require("serve-static")
-// const path = require('path');
-// app = express();
-// app.use(serveStatic(path.join(__dirname, 'dist')));
-// const port = process.env.PORT || 8080;
-// app.listen(port);
+var express = require('express')
+var history = require('connect-history-api-fallback')
+var path = require('path')
+var serveStatic = require('serve-static')
 
-// //Install express server
-// const express = require('express');
-// const path = require('path');
 
-// const app = express();
+var app = express()
 
-// // Serve only the static files form the dist directory
-// app.use(express.static(path.join(__dirname, '/dist')));
+// Use a fallback for non-root routes (required for Vue router)
+//   NOTE: History fallback must be "used" before the static serving middleware!
+app.use(history({
+    // OPTIONAL: Includes more verbose logging
+    verbose: true
+}))
 
-// app.get('/*', function(req,res) {
-    
-//     res.sendFile(__dirname + '/dist/index.html');
-// }); 
+// Serve static assets from the build files (images, etc)
+app.use(serveStatic(path.join(__dirname, '/dist')))
 
-// // Start the app by listening on the default Heroku port
-// app.listen(process.env.PORT || 8080);
-const express = require('express')
-const serveStatic = require('serve-static')
-const path = require('path')
+var port = process.env.PORT || 5000
 
-const app = express()
-
-//here we are configuring dist to serve app files
-app.use('/', serveStatic(path.join(__dirname, '/dist')))
-
-// this * route is to serve project on different page routes except root `/`
-app.get(/.*/, function (req, res) {
-	res.sendFile(path.join(__dirname, '/dist/index.html'))
+app.listen(port, () => {
+  console.log('Server started at http://localhost:5000')
 })
-
-const port = process.env.PORT || 8080
-app.listen(port)
-console.log(`app is listening on port: ${port}`)
