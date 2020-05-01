@@ -141,7 +141,7 @@ export default {
         time: this.time,
       };
       //prevent 2 requests
-      if(this.userIs === "player1") await this.$axios.put(url, request);
+      await this.$axios.put(url, request);
     },
     async tracking() {
       const url = `https://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
@@ -309,8 +309,7 @@ export default {
         this.tracking = 1;
         //starting time
         let date = Date.now() / 1000;
-        //prevent dates getting set twice 
-        if(this.userIs === "player1") this.time = date;
+        this.time = date;
       }, 5000);
     },
     async getIpsum() {
@@ -516,8 +515,8 @@ export default {
       if (this.userIs === "player2" && this.p1Again !== data.p1_again) this.p1Again = data.p1_again;
       if (this.userIs === "player2" && this.p1Text !== data.p1_text) this.p1Text = data.p1_text;
 
-      if (this.userIs === "player2" && !this.time !== data.time) this.time = data.time;
-      if (this.userIs === "player2" && this.apiText !== data.api_text) this.apiText = data.api_text;
+      if (this.time !== data.time) this.time = data.time;
+      if (this.apiText !== data.api_text) this.apiText = data.api_text;
     }
   },
   async mounted() {
