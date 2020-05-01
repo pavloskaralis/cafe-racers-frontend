@@ -135,7 +135,6 @@ export default {
       };
       //prevent 2 requests
       if(this.userIs === "player1") await this.$axios.put(url, request);
-      if(this.userIs === "player1") console.log("sent out apiText", request)
     },
     async time() {
       const url = `https://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
@@ -322,7 +321,6 @@ export default {
       const hipsterText = hipsterResponse.data[0];
       //prevent 2 requests
       if(this.userIs === "player1")this.apiText = hipsterText;
-      if(this.userIs === "player1")console.log("got ipsum",this.userIs, this.apiText)
       // this.apiText = "abc";
     },
     async getGame() {
@@ -348,9 +346,9 @@ export default {
           this.prompt = "Click Ready To Join";
         }
 
-        if(this.end && this.player1) this.player1 = "";
-        if(this.end && this.player2) this.player2 = "";
-        if(this.end && this.userIs === "unknown")this.$router.push("/");
+        // if(this.end && this.player1) this.player1 = "";
+        // if(this.end && this.player2) this.player2 = "";
+        // if(this.end && this.userIs === "unknown")this.$router.push("/");
        
       } catch {
         this.$router.push("/");
@@ -521,7 +519,7 @@ export default {
       if (this.userIs === "player2" && this.p1Text !== data.p1_text) this.p1Text = data.p1_text;
 
       if (this.userIs === "player2" && this.time !== data.time) this.time = data.time;
-      if (this.userIs === "player2" && this.apiText !== data.api_text) {this.apiText = data.api_text; console.log("fetched")}
+      if (this.userIs === "player2" && this.apiText !== data.api_text) this.apiText = data.api_text;
     }
   },
   async mounted() {
@@ -548,6 +546,7 @@ export default {
     if (this.end) {
       const url = `https://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
       this.$axios.delete(url);
+      this.$router.push("/");
     }
   },
 };
