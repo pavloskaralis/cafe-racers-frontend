@@ -4,6 +4,8 @@
     tabindex="0"
     class="game-pieces"
   >
+    <input id="mobile" class="invisible-mobile" type="text" :click="mobileClick"/>
+
     <div class="player-container">
       <cup :state="p1Cup"></cup>
       <cup :state="p2Cup"></cup>
@@ -186,6 +188,10 @@ export default {
       // this.apiText= "aaaaaaaaaaaaaaaaaaaaa sssssssssssssssssss ddddddddddddddddddddd ffffffffffffffffff"
     },
     startGame() {
+      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        let inp = document.getElementById("mobile");
+        inp.click();
+      }
       for (let i = 5; i > 0; i--) {
         setTimeout(
           () => (this.prompt = `Start Typing In ${i}`),
@@ -291,9 +297,17 @@ export default {
       let scrollHeight = lHeight - tbHeight;
       if (scrollHeight > 100) textBody.scrollTop += 20;
     },
+    mobileClick () {
+      let inp = document.getElementById("mobile");
+      inp.focus();
+    }
   },
   mounted() {
     this.getIpsum();
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      let inp = document.getElementById("mobile");
+      inp.click();
+    }
   },
   updated() {
     // console.log("updating")
