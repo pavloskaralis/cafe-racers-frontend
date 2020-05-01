@@ -133,8 +133,7 @@ export default {
       const request = {
         api_text: this.apiText,
       };
-      //prevent 2 requests
-      if(this.userIs === "player1") await this.$axios.put(url, request);
+      await this.$axios.put(url, request);
     },
     async time() {
       const url = `https://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
@@ -296,8 +295,7 @@ export default {
       //must be done here since restart is dependent on both p1Again and p2Again
       if (this.userIs === "player1" && this.p1Again) this.p1Again = 0;
       if (this.userIs === "player2" && this.p2Again) this.p2Again = 0;
-      //get api text; prevent 2 requests
-      if(this.userIs === "player1") await this.getIpsum();
+      await this.getIpsum();
       //countdown
       for (let i = 5; i > 0; i--) {
         setTimeout(()=> this.prompt = `Start Typing In ${i}`, 1000 * [4,3,2,1,0][i-1])
