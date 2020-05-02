@@ -423,6 +423,9 @@ export default {
       }
     },
     processClick(event) {
+      if(this.player2 || this.end){
+        if(this.userIs === "unknown") return;
+      }
       switch (event) {
         case "yes":
           this.userIs === "player1"
