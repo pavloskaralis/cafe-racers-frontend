@@ -480,6 +480,7 @@ export default {
       let splitText;
       if(this.userIs === "player1") splitText = this.p1Text.split(" ")
       if(this.userIs === "player2") splitText = this.p2Text.split(" ")
+      if(this.userIs === "unknown") splitText = "".split(" ");
       //add spaces to match api words
       const words = [];
       for (let i = 0; i < splitText.length; i++) {
