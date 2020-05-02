@@ -35,10 +35,10 @@
         justify-content: flex-end; 
         width: 100%;
         min-height: 600px;
-        height: 100vh; 
+        height: 100%; 
 
       .table {
-        height: 25vh;
+        height: 25%;
         width: 100%;
         background-color: $brown;
         background-image: url("../assets/table.jpg");
@@ -49,7 +49,7 @@
       }
 
       .table-extension {
-        height: 33vh;
+        height: 33%;
         width: 100%;
         background-color: $brown;
         min-height: 198px;
