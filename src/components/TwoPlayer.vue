@@ -424,7 +424,7 @@ export default {
     },
     processClick(event) {
       if(this.player2 || this.end){
-        if(this.userIs === "unknown") return;
+        if(this.userIs === "unknown" && event !== "exit") return;
       }
       switch (event) {
         case "yes":
