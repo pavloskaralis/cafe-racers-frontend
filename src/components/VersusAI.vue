@@ -4,8 +4,6 @@
     tabindex="0"
     class="game-pieces"
   >
-    <input id="mobile" class="invisible-mobile" type="text"/>
-
     <div class="player-container">
       <cup :state="p1Cup"></cup>
       <cup :state="p2Cup"></cup>
@@ -48,6 +46,9 @@
         </span>
       </div>
     </div>
+
+    <SimpleKeyboard @onKeyPress="onKeyPress" v-if="mobile"/>
+
   </div>
 </template>
 
@@ -56,6 +57,7 @@
 import Cup from "./Cup";
 import Letter from "./Letter";
 import Button from "./Button";
+import SimpleKeyboard from "./SimpleKeyboard";
 
 export default {
   name: "versus-ai",
@@ -63,6 +65,7 @@ export default {
     cup: Cup,
     letter: Letter,
     "app-button": Button,
+    SimpleKeyboard
   },
   data() {
     return {
@@ -84,6 +87,7 @@ export default {
     },
     winner() {
       if (this.winner) {
+        if(this.mobile)window.scrollTo(0,0);
         this.tracking = false;
         this.prompt = "Play Again?";
       }
@@ -108,6 +112,9 @@ export default {
     },
   },
   computed: {
+    mobile () {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? true : false; 
+    },
     apiWords() {
       const apiWords = [];
       const apiTextSplit = this.apiText.split(" ");
@@ -178,6 +185,14 @@ export default {
     },
   },
   methods: {
+    onKeyPress(button) {
+      let mobile = button
+
+      if(mobile === "{shift}") mobile = "Shift";
+      if(mobile === "{space}") mobile = " ";
+      if(this.tracking) this.trackInput(mobile);
+            console.log(mobile)
+    },
     async getIpsum() {
       const hipsterQuery =
         "https://hipsum.co/api/?type=hipster-centric&sentences=2";
@@ -188,6 +203,8 @@ export default {
       // this.apiText= "aaaaaaaaaaaaaaaaaaaaa sssssssssssssssssss ddddddddddddddddddddd ffffffffffffffffff"
     },
     startGame() {
+      if(this.mobile)window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
+
       for (let i = 5; i > 0; i--) {
         setTimeout(
           () => (this.prompt = `Start Typing In ${i}`),
@@ -202,8 +219,9 @@ export default {
       }, 5000);
     },
 
-    trackInput() {
-      let key = event.key;
+    trackInput(mobile) {
+      let key = event.key || mobile;
+      console.log(key.charCodeAt(0))
       let currentTextLength = this.p1Text.length;
       let currentLetter = this.apiText[currentTextLength];
       if (key !== currentLetter && key !== "Shift") {
@@ -220,10 +238,6 @@ export default {
         this.setDifficulty(event);
       } else if (["yes", "no"].indexOf(event) !== -1) {
         this.setNext(event);
-      }
-      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        let inp = document.getElementById("mobile");
-        inp.focus();
       }
     },
     setDifficulty(level) {
@@ -296,7 +310,7 @@ export default {
       let lHeight = letter.getBoundingClientRect().top;
       let scrollHeight = lHeight - tbHeight;
       if (scrollHeight > 100) textBody.scrollTop += 20;
-    }
+    },
   },
   mounted() {
     this.getIpsum();

@@ -16,8 +16,14 @@ export default {
 <style lang="scss">
 body {
   margin: 0;
-  //  overflow: hidden;
+  overflow-x: hidden;
   min-height: 600px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 .app {
   height: 100vh;
