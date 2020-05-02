@@ -531,14 +531,14 @@ export default {
       if (this.player2 !== data.player2) this.player2 = data.player2;
       if (this.end !== data.end) this.end = data.end;
 
-      if (this.userIs === "player1" && this.p2Again !== data.p2_again) this.p2Again = data.p2_again;
-      if (this.userIs === "player1" && this.p2Text !== data.p2_text) this.p2Text = data.p2_text;
+      if ((this.userIs === "player1" || this.userIs === "unknown") && this.p2Again !== data.p2_again) this.p2Again = data.p2_again;
+      if ((this.userIs === "player1" || this.userIs === "unknown") && this.p2Text !== data.p2_text) this.p2Text = data.p2_text;
       
-      if (this.userIs === "player2" && this.p1Again !== data.p1_again) this.p1Again = data.p1_again;
-      if (this.userIs === "player2" && this.p1Text !== data.p1_text) this.p1Text = data.p1_text;
+      if ((this.userIs === "player2" || this.userIs === "unknown") && this.p1Again !== data.p1_again) this.p1Again = data.p1_again;
+      if ((this.userIs === "player2" || this.userIs === "unknown") && this.p1Text !== data.p1_text) this.p1Text = data.p1_text;
 
-      if (this.userIs === "player2" && this.time !== data.time) this.time = data.time;
-      if (this.userIs === "player2" && this.apiText !== data.api_text) this.apiText = data.api_text;
+      if ((this.userIs === "player2" || this.userIs === "unknown") && this.time !== data.time) this.time = data.time;
+      if ((this.userIs === "player2" || this.userIs === "unknown") && this.apiText !== data.api_text) this.apiText = data.api_text;
     }
   },
   async mounted() {
