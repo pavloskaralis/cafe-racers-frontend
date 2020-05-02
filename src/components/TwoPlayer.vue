@@ -48,6 +48,9 @@
         </span>
       </div>
     </div>
+
+    <SimpleKeyboard @onKeyPress="onKeyPress" v-if="mobile"/>
+
   </div>
 </template>
 
@@ -56,6 +59,8 @@
 import Cup from "./Cup";
 import Letter from "./Letter";
 import Button from "./Button";
+import SimpleKeyboard from "./SimpleKeyboard";
+
 // import Echo from 'laravel-echo';
  
 // window.Pusher = require('pusher-js');
@@ -80,6 +85,7 @@ export default {
     cup: Cup,
     letter: Letter,
     "app-button": Button,
+    SimpleKeyboard
   },
   data() {
     return {
@@ -104,6 +110,7 @@ export default {
   watch: {
     winner() {
       if (this.winner) {
+        if(this.mobile)window.scrollTo(0,0);
         if(this.userIs === "player1" && !this.p1Text) this.endGame();
         if(this.userIs === "player2" && !this.p2Text) this.endGame();  
         this.tracking = 0;
@@ -180,6 +187,9 @@ export default {
   },
 
   computed: {
+    mobile () {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? true : false; 
+    },
     start() {
       return this.player1 && this.player2 && !this.p1Text && !this.p2Text && !this.tracking
         ? 1
@@ -271,6 +281,13 @@ export default {
   },
 
   methods: {
+    onKeyPress(button) {
+      let mobile = button
+
+      if(mobile === "{shift}") mobile = "Shift";
+      if(mobile === "{space}") mobile = " ";
+      if(this.tracking) this.trackInput(mobile);
+    },
     async restartGame() {
       if (this.userIs === "player1") {
         const url = `https://cafe-racers-backend.herokuapp.com/api/games/${this.id}`;
@@ -292,6 +309,8 @@ export default {
       document.getElementById("text-body").scrollTop = 0;
     },
     async startGame() {
+      if(this.mobile)window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
+
       // console.log("starting")
       //must be done here since restart is dependent on both p1Again and p2Again
       if (this.userIs === "player1" && this.p1Again) this.p1Again = 0;
@@ -354,12 +373,12 @@ export default {
         this.$router.push("/");
       }
     },
-    async trackInput() {
+    async trackInput(mobile) {
       //fail safe to switch back again
       // if(this.userIs === "player1" && this.p1Again) this.p1Again = 0;
       // if(this.userIs === "player2" && this.p2Again) this.p2Again = 0;
 
-      let key = event.key;
+      let key = event.key || mobile;
       let currentTextLength =
         this.userIs === "player1" ? this.p1Text.length : this.p2Text.length;
       let currentLetter = this.apiText[currentTextLength];
