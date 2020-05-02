@@ -474,10 +474,9 @@ export default {
       //default
       let state = "active";
       //get all words of client
-      let splitText =
-        this.userIs === "player1"
-          ? this.p1Text.split(" ")
-          : this.p2Text.split(" ");
+      let splitText;
+      if(this.userIs === "player1") splitText = this.p1Text.split(" ")
+      if(this.userIs === "player2") splitText = this.p2Text.split(" ")
       //add spaces to match api words
       const words = [];
       for (let i = 0; i < splitText.length; i++) {
